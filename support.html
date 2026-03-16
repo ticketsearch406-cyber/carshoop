@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - AutoParts</title>
+    <link rel="stylesheet" href="support.css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=967276f9-968e-46ab-bcd8-e7a7ed3aad67&lang=ru_RU" type="text/javascript"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h1>AutoParts</h1>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="/catalog.html">Каталог</a></li>
+                    <li><a href="o_nas.html">О нас</a></li>
+                    <li><a href="support.html">Контакты</a></li>
+                </ul>
+            </nav>
+            </div>
+    </header>
+
+    <main class="main">
+        <section class="breadcrumbs">
+            <div class="container">
+                <nav class="breadcrumb-nav">
+                    <a href="index.html">Главная</a>
+                    <span>/</span>
+                    <span>Контакты</span>
+                </nav>
+            </div>
+        </section>
+
+        <section class="contacts-page">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Контакты</h1>
+                    <p class="page-subtitle">Свяжитесь с нами удобным для вас способом</p>
+                </div>
+
+                <div class="contacts-main">
+                    <div class="contact-info-detailed">
+                        <div class="contact-card">
+                            <h3>📞 Телефоны</h3>
+                            <p>+7 (86342) 123-45 - Основной</p>
+                            <p>+7 (800) 123-45-67 - Техподдержка</p>
+                        </div>
+                        <div class="contact-card">
+                            <h3>✉️ Почта</h3>
+                            <p>info@autoparts.ru</p>
+                            <p>sales@autoparts.ru</p>
+                        </div>
+                        <div class="contact-card">
+                            <h3>📍 Адрес (Главный)</h3>
+                            <p>г. Азов, ул. Промышленная, д. 1</p>
+                        </div>
+                        <div class="contact-card">
+                            <h3>🕒 Режим работы</h3>
+                            <p>Магазин: Ежедневно 9:00-21:00</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-map-form">
+                        <div class="map-section">
+                            <h3>Мы на карте</h3>
+                            <div class="map-container">
+                                <div id="map" style="width: 100%; height: 350px; background: #eee;"></div>
+                                
+                                <div class="map-addresses">
+                                    <button class="address-btn active" data-coords="47.098991, 39.411948">Главный офис</button>
+                                    <button class="address-btn" data-coords="47.1125, 39.4050">Склад</button>
+                                    <button class="address-btn" data-coords="47.1118, 39.4230">Магазин</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-form-section">
+                            <h3>Обратная связь</h3>
+                            <form class="contact-form" id="contactForm">
+                                <div class="form-group">
+                                    <label>Ваше имя *</label>
+                                    <input type="text" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Ваш email *</label>
+                                    <input type="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Сообщение *</label>
+                                    <textarea name="message" rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="submit-btn">Отправить</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 AutoParts. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="support.js"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoParts - Каталог автозапчастей</title>
+    <link rel="stylesheet" href="catalog.css">
+
+     <link rel="stylesheet" href="glav_list.css">
+    <style>
+        /* Добавляем стили для выпадающего меню прямо сюда, если их нет в catalog.css */
+        .user-menu-dropdown {
+            position: absolute;
+            top: 70px;
+            right: 50px;
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            padding: 15px;
+            border-radius: 8px;
+            z-index: 1001;
+            min-width: 200px;
+            color: #333;
+        }
+        .user-menu-dropdown p { font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .user-menu-dropdown a { display: block; text-decoration: none; color: #007bff; margin-bottom: 10px; font-size: 14px; }
+        .logout-button { width: 100%; background: #ff4d4d; color: white; border: none; padding: 8px; border-radius: 4px; cursor: pointer; }
+        .logout-button:hover { background: #cc0000; }
+        .user-logged-in { background-color: #28a745 !important; border-color: #28a745 !important; }
+    </style>
+</head>
+<body>
+    <div class="auth-modal" id="authModal">
+        <div class="auth-content">
+            <div class="auth-header">
+                <h3 id="authTitle">Вход</h3>
+                <button class="close-btn" id="closeAuth">&times;</button>
+            </div>
+            <form class="auth-form" id="authForm">
+                <div id="regFields" style="display: none;">
+                    <input type="text" placeholder="Ваше имя" id="userName">
+                </div>
+                <input type="email" id="authEmail" placeholder="Email" required>
+                <input type="password" id="authPassword" placeholder="Пароль" required>
+                <button type="submit" class="checkout-btn" id="authSubmit">Войти</button>
+            </form>
+            <p class="auth-toggle">
+                <span id="toggleText">Нет аккаунта?</span> 
+                <a href="#" id="toggleAuth">Зарегистрироваться</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="userMenu" class="user-menu-dropdown" style="display: none;">
+        <p id="menuUserName">Пользователь</p>
+        <hr>
+        <a href="people.html">👤 Мои заказы</a>
+        <button id="logoutBtn" class="logout-button">Выйти из аккаунта</button>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h1>AutoParts</h1>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="o_nas.html">О нас</a></li>
+                    <li><a href="support.html">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="cart-section">
+                <button class="cart-btn" id="loginBtn">
+                    <span id="loginBtnText">Вход</span>
+                </button>
+                <button class="cart-btn" id="cartBtn">
+                    Корзина (<span id="cartCount">0</span>)
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="catalog" id="catalog">
+            <div class="container">
+                <h2>Каталог товаров</h2>
+                <div class="filters">
+                    <select id="categoryFilter">
+                        <option value="all">Все категории</option>
+                        <option value="engine">Двигатель</option>
+                        <option value="brakes">Тормозная система</option>
+                        <option value="suspension">Подвеска</option>
+                        <option value="electrical">Электрика</option>
+                        <option value="transmission">Трансмиссия</option>
+                        <option value="cooling">Система охлаждения</option>
+                        <option value="filters">Фильтры</option>
+                    </select>
+                    <input type="text" id="searchInput" placeholder="Поиск товаров...">
+                </div>
+                <div class="products-grid" id="productsGrid"></div>
+            </div>
+        </section>
+    </main>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Корзина</h3>
+                <button class="close-btn" id="closeCart">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems"></div>
+            <div class="cart-footer">
+                <div class="cart-total">Итого: <span id="cartTotal">0</span> руб.</div>
+                <button class="checkout-btn" id="checkoutBtn">Оформить заказ</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-content">
+            <div class="checkout-header">
+                <h3>Оформление заказа</h3>
+                <button class="close-btn" id="closeCheckout">&times;</button>
+            </div>
+            <form class="checkout-form" id="checkoutForm">
+                <div class="form-section">
+                    <h4>Контактная информация</h4>
+                    <div class="form-row">
+                        <input type="text" id="firstName" placeholder="Имя" required>
+                        <input type="text" id="lastName" placeholder="Фамилия" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="tel" id="phone" placeholder="Телефон" required>
+                        <input type="email" id="email" placeholder="Email" required>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h4>Адрес доставки</h4>
+                    <input type="text" id="city" placeholder="Город" required>
+                    <input type="text" id="address" placeholder="Адрес" required>
+                </div>
+                <div class="order-summary">
+                    <div class="summary-row"><span>Товары:</span> <span id="summaryItems">0 руб.</span></div>
+                    <div class="summary-row total"><span>Итого:</span> <span id="summaryTotal">0 руб.</span></div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="back-btn" id="backToCart">Назад</button>
+                    <button type="submit" class="confirm-btn">Подтвердить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container"><p>&copy; 2024 AutoParts. Все права защищены.</p></div>
+    </footer>
+
+    <script src="catalog.js"></script>
+    <script src="auth.js"></script>
+    <div id="toastContainer" class="toast-container"></div>
+</body>
+</html>

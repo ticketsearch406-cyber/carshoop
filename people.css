@@ -1,0 +1,146 @@
+/* 1. БАЗОВЫЕ НАСТРОЙКИ */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* 2. ГЛАВНЫЙ КОНТЕЙНЕР */
+/* Убираем лишнюю вложенность .container .container из CSS */
+.profile-container {
+    flex: 1;
+    width: 100%;
+    max-width: 1000px; /* Ограничиваем ширину */
+    margin: 0 auto;    /* Центрируем по горизонтали */
+    padding: 120px 20px 40px 20px; /* Сверху 120px, чтобы не заходило под фиксированную шапку */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 3. ШАПКА ПРОФИЛЯ */
+.profile-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 20px;
+}
+
+.profile-header h2 {
+    margin: 0;
+    font-size: 2.2rem;
+    color: #333;
+}
+
+.profile-header p {
+    color: #777;
+    margin-top: 10px;
+}
+
+/* 4. СПИСОК ЗАКАЗОВ */
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* 5. КАРТОЧКА ЗАКАЗА */
+.order-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.order-info {
+    flex: 1;
+}
+
+.order-info h4 {
+    margin: 0 0 10px 0;
+    font-size: 1.3rem;
+    color: #2c3e50;
+}
+
+.order-details {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* 6. БЛОК СТАТУСА И ЦЕНЫ */
+.order-status {
+    text-align: right;
+    margin-left: 20px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 5px 15px;
+    background: #e3f2fd;
+    color: #1976d2;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+.order-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #28a745;
+}
+
+/* 7. ФУТЕР */
+.footer {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+}
+
+/* 8. МОБИЛЬНАЯ ВЕРСИЯ */
+@media (max-width: 768px) {
+    .profile-container {
+        padding-top: 100px;
+    }
+
+    .order-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .order-status {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px dashed #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}

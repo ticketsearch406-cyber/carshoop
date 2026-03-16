@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет - AutoParts</title>
+    <link rel="stylesheet" href="catalog.css"> <link rel="stylesheet" href="people.css">    </head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h1>AutoParts</h1>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="o_nas.html">О нас</a></li>
+                </ul>
+            </nav>
+            <div class="cart-section">
+                <span id="userNameDisplay" style="margin-right: 15px; font-weight: bold;"></span>
+                <button class="logout-button" id="logoutBtn" style="width: auto; padding: 5px 15px;">Выйти</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container profile-container">
+        <div class="profile-header">
+            <h2>Мои заказы</h2>
+            <p>Здесь отображается история ваших покупок</p>
+        </div>
+
+        <div id="ordersList" class="orders-list">
+            <div class="loading">Загрузка истории заказов...</div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container"><p>&copy; 2024 AutoParts. Все права защищены.</p></div>
+    </footer>
+
+    <script src="people.js"></script>
+     <script src="auth.js"></script>
+</body>
+</html>

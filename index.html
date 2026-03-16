@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoParts - Магазин автозапчастей</title>
+    <link rel="stylesheet" href="glav_list.css">
+</head>
+<body> 
+    <div class="auth-modal" id="authModal">
+        <div class="auth-content">
+            <div class="auth-header">
+                <h3 id="authTitle">Вход</h3>
+                <button class="close-btn" id="closeAuth">&times;</button>
+            </div>
+            <form class="auth-form" id="authForm">
+                <div id="regFields" style="display: none;">
+                    <input type="text" placeholder="Ваше имя" id="userName">
+                </div>
+                <input type="email" id="authEmail" placeholder="Email" required>
+                <input type="password" id="authPassword" placeholder="Пароль" required>
+                <button type="submit" class="checkout-btn" id="authSubmit">Войти</button>
+            </form>
+            <p class="auth-toggle">
+                <span id="toggleText">Нет аккаунта?</span> 
+                <a href="#" id="toggleAuth">Зарегистрироваться</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="userMenu" class="user-menu-dropdown" style="display: none;">
+        <p id="menuUserName">Пользователь</p>
+        <hr>
+        <a href="admin.html" id="adminMenuLink" style="display: none; color: #e67e22; font-weight: bold; text-decoration: none; padding: 5px 0; display: block;">⚙️ Админ-панель</a>
+        
+        <a href="people.html">👤 Мои заказы</a>
+        <button id="logoutBtn" class="logout-button">Выйти из аккаунта</button>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>AutoParts</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="o_nas.html">О нас</a></li>
+                    <li><a href="support.html">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="cart-section">
+                <button class="cart-btn" id="loginBtn">
+                    <span id="loginBtnText">Вход</span>
+                </button>
+                <button class="cart-btn" id="cartBtn">
+                    Корзина (<span id="cartCount">0</span>)
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="container">
+                <h2>Автозапчасти для любых марок автомобилей</h2>
+                <p>Широкий ассортимент качественных запчастей по доступным ценам</p>
+            </div>
+        </section>
+
+        <section class="catalog" id="catalog">
+            <div class="container">
+                <h2>Каталог товаров</h2>
+                <div class="filters">
+                    <select id="categoryFilter">
+                        <option value="all">Все категории</option>
+                        <option value="engine">Двигатель</option>
+                        <option value="brakes">Тормозная система</option>
+                        <option value="suspension">Подвеска</option>
+                        <option value="electrical">Электрика</option>
+                        <option value="transmission">Трансмиссия</option>
+                        <option value="cooling">Система охлаждения</option>
+                        <option value="filters">Фильтры</option>
+                    </select>
+                    <input type="text" id="searchInput" placeholder="Поиск товаров...">
+                </div>
+
+                <div class="products-grid" id="productsGrid"></div>
+
+                <div class="catalog-footer" style="text-align: center; margin-top: 30px;">
+                    <a href="catalog.html" class="checkout-btn" style="text-decoration: none; display: inline-block;">
+                        Перейти в полный каталог
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="container">
+                <h2>О компании AutoParts</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>AutoParts - ведущий поставщик автозапчастей на рынке с 2010 года.</p>
+                        <p>Наша миссия - обеспечить клиентов надежными и доступными автозапчастями.</p>
+                    </div>
+                    <div class="about-features">
+                        <div class="feature">
+                            <h3>Качество</h3>
+                            <p>Все товары проходят строгий контроль качества</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Доставка</h3>
+                            <p>Быстрая доставка по всей стране</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Гарантия</h3>
+                            <p>Гарантия на все товары от 6 месяцев</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Корзина</h3>
+                <button class="close-btn" id="closeCart">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems"></div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    Итого: <span id="cartTotal">0</span> руб.
+                </div>
+                <button class="checkout-btn" id="checkoutBtn">Оформить заказ</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 AutoParts. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="glav_list.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>
